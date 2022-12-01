@@ -8,7 +8,7 @@ public class Tests
     }
 
     [Test]
-    public void Test1()
+    public void InputEquals6000Calories()
     {
         Assert.Pass();
     }
