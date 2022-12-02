@@ -5,4 +5,12 @@
   <ItemGroup>
     <PackageReference Include="HtmlAgilityPack" Version="1.11.46" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\AdventOfCode.Domain\AdventOfCode.Domain.csproj" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Update="input.txt">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
 </Project>

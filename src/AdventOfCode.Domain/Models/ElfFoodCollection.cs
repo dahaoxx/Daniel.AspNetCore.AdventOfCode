@@ -1,5 +1,5 @@
 ﻿using System.Collections.ObjectModel;
 
-namespace AdventOfCode.One.Models;
+namespace AdventOfCode.Domain.Models;
 
 public class ElfFoodCollection : Collection<int>{}

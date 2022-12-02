@@ -2,6 +2,8 @@
 	<s:String x:Key="/Default/Environment/UnitTesting/UnitTestSessionStore/Sessions/=2fea1441_002Df7ce_002D4d48_002D9e22_002D5d934fc907d2/@EntryIndexedValue">&lt;SessionState ContinuousTestingMode="0" IsActive="True" Name="GetHighestCaloriesCount_ShouldReturn24000_WhenInputFromFile1 #3" xmlns="urn:schemas-jetbrains-com:jetbrains-ut-session"&gt;&#xD;
   &lt;TestAncestor&gt;&#xD;
     &lt;TestId&gt;xUnit::79DD9EE0-DD0C-4BDE-8FDB-A75364706628::net7.0::AdventOfCode.One.Tests.Unit.ElfFoodServiceTests&lt;/TestId&gt;&#xD;
+    &lt;TestId&gt;xUnit::C399FC37-65C6-4803-869D-984F6AA000B1::net7.0::AdventOfCode.Two.Tests.Unit.ElfFoodServiceTests.GetTopThreeCaloriesCount_ShouldReturn45000_WhenInputFromFile1&lt;/TestId&gt;&#xD;
+    &lt;TestId&gt;xUnit::C399FC37-65C6-4803-869D-984F6AA000B1::net7.0::AdventOfCode.Two.Tests.Unit.ElfFoodServiceTests&lt;/TestId&gt;&#xD;
   &lt;/TestAncestor&gt;&#xD;
 &lt;/SessionState&gt;</s:String>
 	<s:String x:Key="/Default/Environment/UnitTesting/UnitTestSessionStore/Sessions/=33085d86_002D78b9_002D4b72_002D9b61_002Dd48e1cb75943/@EntryIndexedValue">&lt;SessionState ContinuousTestingMode="0" Name="GetHighestCaloriesCount_ShouldReturn24000_WhenInputFromFile1" xmlns="urn:schemas-jetbrains-com:jetbrains-ut-session"&gt;&#xD;

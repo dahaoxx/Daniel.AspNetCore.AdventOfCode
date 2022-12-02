@@ -1,5 +1,5 @@
-using AdventOfCode.One.Contracts;
-using AdventOfCode.One.Services;
+using AdventOfCode.Domain.Contracts;
+using AdventOfCode.Domain.Services;
 using Xunit;
 
 namespace AdventOfCode.One.Tests.Unit;

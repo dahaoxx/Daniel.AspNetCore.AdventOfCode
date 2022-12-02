@@ -1,6 +1,5 @@
-using AdventOfCode.One.Contracts;
-using AdventOfCode.One.Models;
-using AdventOfCode.One.Services;
+using AdventOfCode.Domain.Contracts;
+using AdventOfCode.Domain.Services;
 
 var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddTransient<IElfFoodService, ElfFoodService>();
