@@ -5,82 +5,35 @@ namespace AdventOfCode.Two.Tests.Unit;
 
 public class ElfFoodServiceTests
 {
-    [Fact]
-    public void CalculateScore_ShouldReturn15_WhenInputFromFile1()
+    [Theory]
+    [InlineData("input1.txt", 15)]
+    [InlineData("input2.txt", 30)]
+    [InlineData("input3.txt", 60)]
+    public void CalculateScore_ShouldReturnExpectedInt_WhenInputFromFileName(string fileName, int expected)
     {
         // Arrange
-        const string filePath = "MockFiles/Input1.txt";
+        var filePath = $"MockFiles/{fileName}";
         
         // Act
-        var score = RockPaperScissorsService.CalculateScorePart1(filePath);
+        var actual = RockPaperScissorsService.CalculateScorePart1(filePath);
         
         // Assert
-        Assert.Equal(15, score);
+        Assert.Equal(expected, actual);
     }
-    
-    
-    [Fact]
-    public void CalculateScore_ShouldReturn30_WhenInputFromFile2()
+
+    [Theory]
+    [InlineData("input1.txt", 12)]
+    [InlineData("input2.txt", 24)]
+    [InlineData("input3.txt", 48)]
+    public void CalculateScoreParTwo_ShouldReturnExpectedInt_WhenInputFromFileName(string fileName, int expected)
     {
         // Arrange
-        const string filePath = "MockFiles/Input2.txt";
+        var filePath = $"MockFiles/{fileName}";
         
         // Act
-        var score = RockPaperScissorsService.CalculateScorePart1(filePath);
+        var actual = RockPaperScissorsService.CalculateScorePart2(filePath);
         
         // Assert
-        Assert.Equal(30, score);
-    }
-    
-    [Fact]
-    public void CalculateScore_ShouldReturn60_WhenInputFromFile3()
-    {
-        // Arrange
-        const string filePath = "MockFiles/Input3.txt";
-        
-        // Act
-        var score = RockPaperScissorsService.CalculateScorePart1(filePath);
-        
-        // Assert
-        Assert.Equal(60, score);
-    }
-    
-    [Fact]
-    public void CalculateScoreParTwo_ShouldReturn12_WhenInputFromFile1()
-    {
-        // Arrange
-        const string filePath = "MockFiles/Input1.txt";
-        
-        // Act
-        var score = RockPaperScissorsService.CalculateScorePart2(filePath);
-        
-        // Assert
-        Assert.Equal(12, score);
-    }
-    
-    [Fact]
-    public void CalculateScoreParTwo_ShouldReturn24_WhenInputFromFile2()
-    {
-        // Arrange
-        const string filePath = "MockFiles/Input2.txt";
-        
-        // Act
-        var score = RockPaperScissorsService.CalculateScorePart2(filePath);
-        
-        // Assert
-        Assert.Equal(24, score);
-    }
-    
-    [Fact]
-    public void CalculateScoreParTwo_ShouldReturn48_WhenInputFromFile3()
-    {
-        // Arrange
-        const string filePath = "MockFiles/Input3.txt";
-        
-        // Act
-        var score = RockPaperScissorsService.CalculateScorePart2(filePath);
-        
-        // Assert
-        Assert.Equal(48, score);
+        Assert.Equal(expected, actual);
     }
 }

@@ -1,16 +1,15 @@
-﻿using AdventOfCode.One.Contracts;
-using AdventOfCode.One.Models;
+﻿using AdventOfCode.One.Models;
 
 namespace AdventOfCode.One.Services;
 
-public sealed class ElfFoodService : IElfFoodService
+public static class ElfFoodService
 {
-    public int GetHighestCaloriesCount(string inputFileName) 
+    public static int GetHighestCaloriesCount(string inputFileName) 
         => GetElfCollection(inputFileName)
             .Select(x => x.Sum())
             .Max();
 
-    public int GetTopThreeCaloriesCount(string inputFileName)
+    public static int GetTopThreeCaloriesCount(string inputFileName)
         => GetElfCollection(inputFileName)
             .Select(x => x.Sum())
             .OrderByDescending(x => x)

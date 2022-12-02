@@ -1,4 +1,3 @@
-using AdventOfCode.One.Contracts;
 using AdventOfCode.One.Services;
 using Xunit;
 
@@ -6,87 +5,35 @@ namespace AdventOfCode.One.Tests.Unit;
 
 public class ElfFoodServiceTests
 {
-    private readonly IElfFoodService _sut;
+    [Theory]
+    [InlineData("input1.txt", 24000)]
+    [InlineData("input2.txt", 3333)]
+    [InlineData("input3.txt", 110000)]
+    public void GetHighestCaloriesCount_ShouldReturnExpectedInt_WhenInputFromFileName(string fileName, int expected)
+    {
+        // Arrange
+        var filePath = $"MockFiles/{fileName}";
 
-    public ElfFoodServiceTests()
-    {
-        _sut = new ElfFoodService();
+        // Act
+        var actual = ElfFoodService.GetHighestCaloriesCount(filePath);
+
+        // Assert
+        Assert.Equal(expected, actual);
     }
 
-    [Fact]
-    public void GetHighestCaloriesCount_ShouldReturn24000_WhenInputFromFile1()
+    [Theory]
+    [InlineData("input1.txt", 45000)]
+    [InlineData("input2.txt", 6676)]
+    [InlineData("input3.txt", 240000)]
+    public void GetTopThreeCaloriesCount_ShouldExpectedInt0_WhenInputFromFileName(string fileName, int expected)
     {
         // Arrange
-        const string filePath = "MockFiles/Input1.txt";
+        var filePath = $"MockFiles/{fileName}";
         
         // Act
-        var max = _sut.GetHighestCaloriesCount(filePath);
-        
+        var actual = ElfFoodService.GetTopThreeCaloriesCount(filePath);
+
         // Assert
-        Assert.Equal(24000, max);
+        Assert.Equal(expected, actual);
     }
-    
-    [Fact]
-    public void GetHighestCaloriesCount_ShouldReturn3333_WhenInputFromFile2()
-    {
-        // Arrange
-        const string filePath = "MockFiles/input2.txt";
-        
-        // Act
-        var max = _sut.GetHighestCaloriesCount(filePath);
-        
-        // Assert
-        Assert.Equal(3333, max);
-    }
-    
-    [Fact]
-    public void GetHighestCaloriesCount_ShouldReturn110000_WhenInputFromFile2()
-    {
-        // Arrange
-        const string filePath = "MockFiles/input3.txt";
-        
-        // Act
-        var max = _sut.GetHighestCaloriesCount(filePath);
-        
-        // Assert
-        Assert.Equal(110000, max);
-    }
-    
-    [Fact]
-    public void GetTopThreeCaloriesCount_ShouldReturn45000_WhenInputFromFile1()
-    {
-        // Arrange
-        const string filePath = "MockFiles/Input1.txt";
-        
-        // Act
-        var max = _sut.GetTopThreeCaloriesCount(filePath);
-        
-        // Assert
-        Assert.Equal(45000, max);
-    }
-    
-    [Fact]
-    public void GetTopThreeCaloriesCount_ShouldReturn45000_WhenInputFromFile2()
-    {
-        // Arrange
-        const string filePath = "MockFiles/Input2.txt";
-        
-        // Act
-        var max = _sut.GetTopThreeCaloriesCount(filePath);
-        
-        // Assert
-        Assert.Equal(6676, max);
-    }
-    
-    [Fact]
-    public void GetTopThreeCaloriesCount_ShouldReturn45000_WhenInputFromFile3()
-    {
-        // Arrange
-        const string filePath = "MockFiles/Input3.txt";
-        
-        // Act
-        var max = _sut.GetTopThreeCaloriesCount(filePath);
-        
-        // Assert
-        Assert.Equal(240000, max);
-    } }
+}

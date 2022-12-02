@@ -1,5 +1,5 @@
 ﻿<wpf:ResourceDictionary xml:space="preserve" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:s="clr-namespace:System;assembly=mscorlib" xmlns:ss="urn:shemas-jetbrains-com:settings-storage-xaml" xmlns:wpf="http://schemas.microsoft.com/winfx/2006/xaml/presentation">
-	<s:String x:Key="/Default/Environment/UnitTesting/UnitTestSessionStore/Sessions/=2fea1441_002Df7ce_002D4d48_002D9e22_002D5d934fc907d2/@EntryIndexedValue">&lt;SessionState ContinuousTestingMode="0" Name="GetHighestCaloriesCount_ShouldReturn24000_WhenInputFromFile1 #3" xmlns="urn:schemas-jetbrains-com:jetbrains-ut-session"&gt;&#xD;
+	<s:String x:Key="/Default/Environment/UnitTesting/UnitTestSessionStore/Sessions/=2fea1441_002Df7ce_002D4d48_002D9e22_002D5d934fc907d2/@EntryIndexedValue">&lt;SessionState ContinuousTestingMode="0" IsActive="True" Name="GetHighestCaloriesCount_ShouldReturn24000_WhenInputFromFile1 #3" xmlns="urn:schemas-jetbrains-com:jetbrains-ut-session"&gt;&#xD;
   &lt;TestAncestor&gt;&#xD;
     &lt;TestId&gt;xUnit::79DD9EE0-DD0C-4BDE-8FDB-A75364706628::net7.0::AdventOfCode.One.Tests.Unit.ElfFoodServiceTests&lt;/TestId&gt;&#xD;
     &lt;TestId&gt;xUnit::C399FC37-65C6-4803-869D-984F6AA000B1::net7.0::AdventOfCode.Two.Tests.Unit.ElfFoodServiceTests.GetTopThreeCaloriesCount_ShouldReturn45000_WhenInputFromFile1&lt;/TestId&gt;&#xD;
@@ -16,8 +16,13 @@
     &lt;TestId&gt;xUnit::79DD9EE0-DD0C-4BDE-8FDB-A75364706628::net7.0::AdventOfCode.One.Tests.Unit.ElfFoodServiceTests.GetHighestCaloriesCount_ShouldReturn24000_WhenInputFromFile1&lt;/TestId&gt;&#xD;
   &lt;/TestAncestor&gt;&#xD;
 &lt;/SessionState&gt;</s:String>
-	<s:String x:Key="/Default/Environment/UnitTesting/UnitTestSessionStore/Sessions/=abbe7ac3_002D16fe_002D46e8_002D9d15_002D19725e406919/@EntryIndexedValue">&lt;SessionState ContinuousTestingMode="0" IsActive="True" Name="CalculateScore_ShouldReturn15_WhenInputFromFile1" xmlns="urn:schemas-jetbrains-com:jetbrains-ut-session"&gt;&#xD;
-  &lt;Project Location="C:\Users\danie\RiderProjects\Daniel.AspNetCore.AdventOfCode\Tests\AdventOfCode.Two.Tests.Unit" Presentation="&amp;lt;Tests&amp;gt;\&amp;lt;AdventOfCode.Two.Tests.Unit&amp;gt;" /&gt;&#xD;
+	<s:String x:Key="/Default/Environment/UnitTesting/UnitTestSessionStore/Sessions/=abbe7ac3_002D16fe_002D46e8_002D9d15_002D19725e406919/@EntryIndexedValue">&lt;SessionState ContinuousTestingMode="0" Name="CalculateScore_ShouldReturn15_WhenInputFromFile1" xmlns="urn:schemas-jetbrains-com:jetbrains-ut-session"&gt;&#xD;
+  &lt;Or&gt;&#xD;
+    &lt;Project Location="C:\Users\danie\RiderProjects\Daniel.AspNetCore.AdventOfCode\Tests\AdventOfCode.Two.Tests.Unit" Presentation="&amp;lt;Tests&amp;gt;\&amp;lt;AdventOfCode.Two.Tests.Unit&amp;gt;" /&gt;&#xD;
+    &lt;TestAncestor&gt;&#xD;
+      &lt;TestId&gt;xUnit::79DD9EE0-DD0C-4BDE-8FDB-A75364706628::net7.0::AdventOfCode.One.Tests.Unit.ElfFoodServiceTests.GetHighestCaloriesCount_ShouldReturn24000_WhenInputFromFile1&lt;/TestId&gt;&#xD;
+    &lt;/TestAncestor&gt;&#xD;
+  &lt;/Or&gt;&#xD;
 &lt;/SessionState&gt;</s:String>
 	<s:String x:Key="/Default/Environment/UnitTesting/UnitTestSessionStore/Sessions/=c890ced9_002Df478_002D490e_002Dbc04_002Da18a59a75942/@EntryIndexedValue">&lt;SessionState ContinuousTestingMode="0" Name="ElfFoodServiceTests" xmlns="urn:schemas-jetbrains-com:jetbrains-ut-session"&gt;&#xD;
   &lt;TestAncestor&gt;&#xD;
