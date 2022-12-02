@@ -1,4 +1,4 @@
-﻿namespace AdventOfCode.Domain.Contracts;
+﻿namespace AdventOfCode.One.Contracts;
 
 public interface IElfFoodService
 {

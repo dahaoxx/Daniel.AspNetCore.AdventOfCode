@@ -23,6 +23,7 @@
 
     <ItemGroup>
       <ProjectReference Include="..\..\src\AdventOfCode.Domain\AdventOfCode.Domain.csproj" />
+      <ProjectReference Include="..\..\src\AdventOfCode.Two\AdventOfCode.Two.csproj" />
     </ItemGroup>
 
     <ItemGroup>

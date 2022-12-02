@@ -5,11 +5,8 @@
         <TargetFramework>net7.0</TargetFramework>
         <ImplicitUsings>enable</ImplicitUsings>
         <Nullable>enable</Nullable>
+        <DockerDefaultTargetOS>Linux</DockerDefaultTargetOS>
     </PropertyGroup>
-
-    <ItemGroup>
-      <ProjectReference Include="..\AdventOfCode.Domain\AdventOfCode.Domain.csproj" />
-    </ItemGroup>
 
     <ItemGroup>
       <None Update="input.txt">

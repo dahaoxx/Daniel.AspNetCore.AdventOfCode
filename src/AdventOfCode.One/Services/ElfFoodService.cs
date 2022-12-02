@@ -1,7 +1,7 @@
-﻿using AdventOfCode.Domain.Contracts;
-using AdventOfCode.Domain.Models;
+﻿using AdventOfCode.One.Contracts;
+using AdventOfCode.One.Models;
 
-namespace AdventOfCode.Domain.Services;
+namespace AdventOfCode.One.Services;
 
 public sealed class ElfFoodService : IElfFoodService
 {

@@ -1,15 +1,9 @@
-using AdventOfCode.Domain.Contracts;
-using AdventOfCode.Domain.Services;
-
-var builder = WebApplication.CreateBuilder(args);
-builder.Services.AddTransient<IElfFoodService, ElfFoodService>();
-
-var app = builder.Build();
+﻿using AdventOfCode.One.Services;
 
 const string fileName = "input.txt";
 var elfFoodService = new ElfFoodService();
-var answerDayOne = elfFoodService.GetHighestCaloriesCount(fileName);
+var answerOneOne = elfFoodService.GetHighestCaloriesCount(fileName);
+var answerOneTwo = elfFoodService.GetTopThreeCaloriesCount(fileName);
 
-app.Run();
-
-
+Console.WriteLine($"Answer 1.1: {answerOneOne}");
+Console.WriteLine($"Answer 1.2: {answerOneTwo}");
