@@ -1,0 +1,21 @@
+﻿<wpf:ResourceDictionary xml:space="preserve" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:s="clr-namespace:System;assembly=mscorlib" xmlns:ss="urn:shemas-jetbrains-com:settings-storage-xaml" xmlns:wpf="http://schemas.microsoft.com/winfx/2006/xaml/presentation">
+	<s:String x:Key="/Default/Environment/UnitTesting/UnitTestSessionStore/Sessions/=2fea1441_002Df7ce_002D4d48_002D9e22_002D5d934fc907d2/@EntryIndexedValue">&lt;SessionState ContinuousTestingMode="0" IsActive="True" Name="GetHighestCaloriesCount_ShouldReturn24000_WhenInputFromFile1 #3" xmlns="urn:schemas-jetbrains-com:jetbrains-ut-session"&gt;&#xD;
+  &lt;TestAncestor&gt;&#xD;
+    &lt;TestId&gt;xUnit::79DD9EE0-DD0C-4BDE-8FDB-A75364706628::net7.0::AdventOfCode.One.Tests.Unit.ElfFoodServiceTests&lt;/TestId&gt;&#xD;
+  &lt;/TestAncestor&gt;&#xD;
+&lt;/SessionState&gt;</s:String>
+	<s:String x:Key="/Default/Environment/UnitTesting/UnitTestSessionStore/Sessions/=33085d86_002D78b9_002D4b72_002D9b61_002Dd48e1cb75943/@EntryIndexedValue">&lt;SessionState ContinuousTestingMode="0" Name="GetHighestCaloriesCount_ShouldReturn24000_WhenInputFromFile1" xmlns="urn:schemas-jetbrains-com:jetbrains-ut-session"&gt;&#xD;
+  &lt;TestAncestor&gt;&#xD;
+    &lt;TestId&gt;xUnit::79DD9EE0-DD0C-4BDE-8FDB-A75364706628::net7.0::AdventOfCode.One.Tests.Unit.ElfFoodServiceTests.GetHighestCaloriesCount_ShouldReturn24000_WhenInputFromFile1&lt;/TestId&gt;&#xD;
+  &lt;/TestAncestor&gt;&#xD;
+&lt;/SessionState&gt;</s:String>
+	<s:String x:Key="/Default/Environment/UnitTesting/UnitTestSessionStore/Sessions/=73a3cda3_002D4c1c_002D4a94_002Dbeae_002D3d30c00f8977/@EntryIndexedValue">&lt;SessionState ContinuousTestingMode="0" Name="GetHighestCaloriesCount_ShouldReturn24000_WhenInputFromFile1 #2" xmlns="urn:schemas-jetbrains-com:jetbrains-ut-session"&gt;&#xD;
+  &lt;TestAncestor&gt;&#xD;
+    &lt;TestId&gt;xUnit::79DD9EE0-DD0C-4BDE-8FDB-A75364706628::net7.0::AdventOfCode.One.Tests.Unit.ElfFoodServiceTests.GetHighestCaloriesCount_ShouldReturn24000_WhenInputFromFile1&lt;/TestId&gt;&#xD;
+  &lt;/TestAncestor&gt;&#xD;
+&lt;/SessionState&gt;</s:String>
+	<s:String x:Key="/Default/Environment/UnitTesting/UnitTestSessionStore/Sessions/=c890ced9_002Df478_002D490e_002Dbc04_002Da18a59a75942/@EntryIndexedValue">&lt;SessionState ContinuousTestingMode="0" Name="ElfFoodServiceTests" xmlns="urn:schemas-jetbrains-com:jetbrains-ut-session"&gt;&#xD;
+  &lt;TestAncestor&gt;&#xD;
+    &lt;TestId&gt;xUnit::79DD9EE0-DD0C-4BDE-8FDB-A75364706628::net7.0::AdventOfCode.One.Tests.Unit.ElfFoodServiceTests&lt;/TestId&gt;&#xD;
+  &lt;/TestAncestor&gt;&#xD;
+&lt;/SessionState&gt;</s:String></wpf:ResourceDictionary>
