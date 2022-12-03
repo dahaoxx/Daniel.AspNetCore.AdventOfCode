@@ -1,27 +1,17 @@
-﻿namespace Three.Rucksack.Extensions;
+﻿using One.ElfCalories.Exceptions;
+
+namespace Three.Rucksack.Extensions;
 
 public static class CharExtensions
 {
-    public static int ToPriority(this char value)
-    {
-        var currentAsciiCode = (int) value;
-        
-        const int aUpperCase = 'A';
-        const int zUpperCase = 'Z';
-        const int upperCasePriorityOffset = 38;
-        if(currentAsciiCode is >= aUpperCase and <= zUpperCase)
+    private const int LowerCaseAsciiOffset = 'a';  // => 97
+    private const int UpperCaseAsciiOffset = 'A';  // => 65
+    
+    public static int ToPriority(this char value) =>
+        value switch
         {
-            return currentAsciiCode - upperCasePriorityOffset;
-        }
-        
-        const int aLowerCase = 'a';
-        const int zLowerCase = 'z';
-        const int lowerCasePriorityOffset = 96;
-        if (currentAsciiCode is >= aLowerCase and <= zLowerCase)
-        {
-            return currentAsciiCode - lowerCasePriorityOffset;
-        }
-
-        throw new ArgumentException("Value must be of a-z or A-Z");
-    }
+            >= 'a' and <= 'z' => value - LowerCaseAsciiOffset + 1,
+            >= 'A' and <= 'Z' => value - UpperCaseAsciiOffset + 27,
+            _ => throw new ElfIsLyingException("Some input is other than a-z and A-Z")
+        };
 }

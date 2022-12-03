@@ -75,7 +75,7 @@ public class RucksackTests
         var backpack = new Backpack(input);
             
         // Act
-        var actual = backpack.CompartmentsDiff();
+        var actual = backpack.GetMisplacedItem();
         
         // Assert
         Assert.Equal(expected, actual);

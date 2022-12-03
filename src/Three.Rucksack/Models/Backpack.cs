@@ -1,33 +1,22 @@
-﻿using Three.Rucksack.Utils;
+﻿using One.ElfCalories.Exceptions;
 using Three.Rucksack.Extensions;
 
 namespace Three.Rucksack.Models;
 
-public class Backpack
+public record Backpack(string Items) 
 {
-    private readonly string _inputString;
+    public int Priority => GetMisplacedItem().ToPriority();
 
-    public Backpack(string input)
+    public char GetMisplacedItem()
     {
-        _inputString = input;
-    }
-
-    public IEnumerable<char> AllItems => _inputString;
-    private IEnumerable<char> CompartmentOne => StringUtils.GetFistHalf(_inputString);
-    private IEnumerable<char> CompartmentTwo => StringUtils.GetSecondHalf(_inputString);
-   
-    public int Priority => CompartmentsDiff().ToPriority();
-
-    public char CompartmentsDiff()
-    {
-        foreach (var compartmentOneItem in CompartmentOne)
+        foreach (var compartmentOneItem in Items.FistHalf())
         {
-            if (CompartmentTwo.Any(x => x == compartmentOneItem))
+            if (Items.SecondHalf().Any(x => x == compartmentOneItem))
             {
                 return compartmentOneItem;
             }
         }
 
-        throw new ArgumentException();
+        throw new ElfIsLyingException();
     }
 };

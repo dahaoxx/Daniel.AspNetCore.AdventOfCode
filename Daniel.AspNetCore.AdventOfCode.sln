@@ -33,7 +33,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Tree.Rucksack.Tests.Unit", 
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Four.Unknown.Tests.Unit", "Tests\Four.Unknow.Test\Four.Unknown.Tests.Unit.csproj", "{41B9A3A4-C39B-4F53-91A3-22344A386532}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Four.Unkown", "src\Four.Unknown\Four.Unkown.csproj", "{1EC1D8B2-A204-475E-B73F-9646283140C4}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Four.Unknown", "src\Four.Unknown\Four.Unknown.csproj", "{1EC1D8B2-A204-475E-B73F-9646283140C4}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

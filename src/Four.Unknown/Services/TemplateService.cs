@@ -1,4 +1,4 @@
-﻿namespace Four.Unkown.Services;
+﻿namespace Four.Unknown.Services;
 
 public static class TemplateService
 {

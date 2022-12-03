@@ -18,11 +18,9 @@ public static class BackpackService
     
     public static int CalculateTotalTeamPriority(string inputFileName) =>
         File.ReadAllLines(inputFileName)
-            .Select(t => new Backpack(t))
-            .Select((x, i) => new { Index = i, Value = x })
-            .GroupBy(x => x.Index / 3)
-            .Select(x => x.Select(v => v.Value))
-            .Select(backpackGroup => new ElfTeam(backpackGroup.ToList()))
+            .Select(x => new Backpack(x))
+            .Chunk(3)
+            .Select(x => new ElfTeam(x.ToList()))
             .Sum(elfTeam => elfTeam.Priority);
 
     #endregion

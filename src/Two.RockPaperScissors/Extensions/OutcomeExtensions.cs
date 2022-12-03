@@ -1,7 +1,7 @@
 ﻿using System.Diagnostics;
 using Two.RockPaperScissors.Models;
 
-namespace Two.RockPaperScissors;
+namespace Two.RockPaperScissors.Extensions;
 
 internal static class OutcomeExtensions
 {

@@ -1,4 +1,5 @@
-﻿using Two.RockPaperScissors.Models;
+﻿using Two.RockPaperScissors.Extensions;
+using Two.RockPaperScissors.Models;
 using Two.RockPaperScissors.Utils;
 
 namespace Two.RockPaperScissors.Services;
