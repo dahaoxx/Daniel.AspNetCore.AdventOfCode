@@ -24,6 +24,7 @@
     <ItemGroup>
       <ProjectReference Include="..\..\src\Domain\Domain.csproj" />
       <ProjectReference Include="..\..\src\Template\Template.csproj" />
+      <ProjectReference Include="..\..\src\Three.Rucksack\Three.Rucksack.csproj" />
       <ProjectReference Include="..\..\src\Two.RockPaperScissors\Two.RockPaperScissors.csproj" />
     </ItemGroup>
 
@@ -32,9 +33,6 @@
         <CopyToOutputDirectory>Always</CopyToOutputDirectory>
       </None>
       <None Update="MockFiles\input2.txt">
-        <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-      </None>
-      <None Update="MockFiles\input3.txt">
         <CopyToOutputDirectory>Always</CopyToOutputDirectory>
       </None>
     </ItemGroup>

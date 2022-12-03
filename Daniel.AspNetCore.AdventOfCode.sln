@@ -21,7 +21,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Two.RockPaperScissors", "sr
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Template", "src\Template\Template.csproj", "{193FFB12-76B1-49F9-9720-B365099364F0}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Three.Unknown", "src\Three.Unknown\Three.Unknown.csproj", "{1F2E48A1-BE5E-4D4C-8AF6-96C75538A468}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Three.Rucksack", "src\Three.Rucksack\Three.Rucksack.csproj", "{1F2E48A1-BE5E-4D4C-8AF6-96C75538A468}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Template.Tests.Unit", "Tests\Template.Test\Template.Tests.Unit.csproj", "{22BCAB79-DD0C-4F1D-BB72-267AC0285DBD}"
 EndProject
@@ -29,7 +29,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Template", "Template", "{95
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Template", "Template", "{DB251ACD-EE8B-43FE-AA1B-7E6A7CE9F994}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Tree.Unknown.Tests.Unit", "Tests\Three.Unknown.Tests.Unit\Tree.Unknown.Tests.Unit.csproj", "{1EAD8BA8-7530-4BFA-A645-EFEA13EEAEDD}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Tree.Rucksack.Tests.Unit", "Tests\Three.Unknown.Tests.Unit\Tree.Rucksack.Tests.Unit.csproj", "{1EAD8BA8-7530-4BFA-A645-EFEA13EEAEDD}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
