@@ -8,18 +8,18 @@ public static class CharExtensions
         
         const int aUpperCase = 'A';
         const int zUpperCase = 'Z';
-        const int upperCaseAsciiOffset = zUpperCase + 27;
+        const int upperCasePriorityOffset = 38;
         if(currentAsciiCode is >= aUpperCase and <= zUpperCase)
         {
-            return currentAsciiCode - upperCaseAsciiOffset;
+            return currentAsciiCode - upperCasePriorityOffset;
         }
         
         const int aLowerCase = 'a';
         const int zLowerCase = 'z';
-        const int lowerCaseAsciiOffset = zLowerCase + 1;
+        const int lowerCasePriorityOffset = 96;
         if (currentAsciiCode is >= aLowerCase and <= zLowerCase)
         {
-            return currentAsciiCode - lowerCaseAsciiOffset;
+            return currentAsciiCode - lowerCasePriorityOffset;
         }
 
         throw new ArgumentException("Value must be of a-z or A-Z");
