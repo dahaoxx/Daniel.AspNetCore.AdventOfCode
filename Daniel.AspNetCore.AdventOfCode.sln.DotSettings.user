@@ -15,8 +15,8 @@
     &lt;TestId&gt;xUnit::79DD9EE0-DD0C-4BDE-8FDB-A75364706628::net7.0::AdventOfCode.One.Tests.Unit.ElfFoodServiceTests.GetHighestCaloriesCount_ShouldReturn24000_WhenInputFromFile1&lt;/TestId&gt;&#xD;
   &lt;/TestAncestor&gt;&#xD;
 &lt;/SessionState&gt;</s:String>
-	<s:String x:Key="/Default/Environment/UnitTesting/UnitTestSessionStore/Sessions/=405fe180_002D2050_002D4c41_002Db5e2_002D30181e93ce05/@EntryIndexedValue">&lt;SessionState ContinuousTestingMode="0" IsActive="True" Name="ToPriority_ShouldReturnExpectedInt_WhenInputFromArgument #2" xmlns="urn:schemas-jetbrains-com:jetbrains-ut-session"&gt;&#xD;
-  &lt;Project Location="C:\Users\danie\RiderProjects\Daniel.AspNetCore.AdventOfCode" Presentation="&amp;lt;Tests&amp;gt;" /&gt;&#xD;
+	<s:String x:Key="/Default/Environment/UnitTesting/UnitTestSessionStore/Sessions/=405fe180_002D2050_002D4c41_002Db5e2_002D30181e93ce05/@EntryIndexedValue">&lt;SessionState ContinuousTestingMode="0" Name="ToPriority_ShouldReturnExpectedInt_WhenInputFromArgument #2" xmlns="urn:schemas-jetbrains-com:jetbrains-ut-session"&gt;&#xD;
+  &lt;Project Location="C:\Users\danie\RiderProjects\Daniel.AspNetCore.AdventOfCode" Presentation="&amp;lt;Calendar&amp;gt;" /&gt;&#xD;
 &lt;/SessionState&gt;</s:String>
 	<s:String x:Key="/Default/Environment/UnitTesting/UnitTestSessionStore/Sessions/=73a3cda3_002D4c1c_002D4a94_002Dbeae_002D3d30c00f8977/@EntryIndexedValue">&lt;SessionState ContinuousTestingMode="0" Name="GetHighestCaloriesCount_ShouldReturn24000_WhenInputFromFile1 #2" xmlns="urn:schemas-jetbrains-com:jetbrains-ut-session"&gt;&#xD;
   &lt;TestAncestor&gt;&#xD;
@@ -35,8 +35,6 @@
     &lt;TestId&gt;xUnit::1EAD8BA8-7530-4BFA-A645-EFEA13EEAEDD::net7.0::Tree.Rucksack.Tests.Unit.RucksackTests.Part1_ShouldReturnExpectedInt_WhenInputFromFileName&lt;/TestId&gt;&#xD;
   &lt;/TestAncestor&gt;&#xD;
 &lt;/SessionState&gt;</s:String>
-	<s:String x:Key="/Default/Environment/UnitTesting/UnitTestSessionStore/Sessions/=c890ced9_002Df478_002D490e_002Dbc04_002Da18a59a75942/@EntryIndexedValue">&lt;SessionState ContinuousTestingMode="0" Name="ElfFoodServiceTests" xmlns="urn:schemas-jetbrains-com:jetbrains-ut-session"&gt;&#xD;
-  &lt;TestAncestor&gt;&#xD;
-    &lt;TestId&gt;xUnit::79DD9EE0-DD0C-4BDE-8FDB-A75364706628::net7.0::AdventOfCode.One.Tests.Unit.ElfFoodServiceTests&lt;/TestId&gt;&#xD;
-  &lt;/TestAncestor&gt;&#xD;
+	<s:String x:Key="/Default/Environment/UnitTesting/UnitTestSessionStore/Sessions/=c890ced9_002Df478_002D490e_002Dbc04_002Da18a59a75942/@EntryIndexedValue">&lt;SessionState ContinuousTestingMode="0" IsActive="True" Name="ElfFoodServiceTests" xmlns="urn:schemas-jetbrains-com:jetbrains-ut-session"&gt;&#xD;
+  &lt;Project Location="C:\Users\danie\RiderProjects\Daniel.AspNetCore.AdventOfCode" Presentation="&amp;lt;Calendar&amp;gt;" /&gt;&#xD;
 &lt;/SessionState&gt;</s:String></wpf:ResourceDictionary>
