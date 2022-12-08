@@ -83,7 +83,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "25", "25", "{9505E851-AE94-
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Template", "src\Six.Unknown\Template.csproj", "{8ECC4251-834F-4B65-BFA6-C9239EF5C93A}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Template", "src\Eight.Unknown\Template.csproj", "{52851F70-0B56-44FC-9B06-4CD2EE92E32E}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Eight.TreeHouse", "src\Eight.Unknown\Eight.TreeHouse.csproj", "{52851F70-0B56-44FC-9B06-4CD2EE92E32E}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Template", "src\Nine.Unknown\Template.csproj", "{7295F3E7-7C63-4458-913C-50371346F65F}"
 EndProject
@@ -121,7 +121,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Template", "src\Twentyfive.
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Template", "src\Sixteen.Unknown\Template.csproj", "{DD9A2EAA-A1E7-4260-ABF9-CB19919F6831}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Template", "src\Seven.Unknown\Template.csproj", "{C4C97939-8788-4BDC-B0EA-D1143C86DD27}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Seven.FileSystem", "src\Seven.Unknown\Seven.FileSystem.csproj", "{C4C97939-8788-4BDC-B0EA-D1143C86DD27}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

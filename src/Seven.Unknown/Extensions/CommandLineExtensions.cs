@@ -1,8 +1,8 @@
 ﻿using One.ElfCalories.Exceptions;
-using Template.Enums;
-using Template.Models;
+using Seven.FileSystem.Enums;
+using Seven.FileSystem.Models;
 
-namespace Template.Extensions;
+namespace Seven.FileSystem.Extensions;
 
 public static class CommandLineExtensions
 {

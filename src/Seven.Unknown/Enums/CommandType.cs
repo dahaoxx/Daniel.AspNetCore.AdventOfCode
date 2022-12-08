@@ -1,4 +1,4 @@
-﻿namespace Template.Enums;
+﻿namespace Seven.FileSystem.Enums;
 
 public enum CommandType
 {

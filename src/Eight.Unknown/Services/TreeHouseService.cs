@@ -1,10 +1,10 @@
-﻿namespace Template.Services;
+﻿namespace Eight.TreeHouse.Services;
 
-public static class TemplateService
+public static class TreeHouseService
 {
     #region Part 1
 
-    public static int Part1(string inputFileName)
+    public static int GetNumberOfVisibleTrees(string inputFileName)
     {
         var lines = File.ReadAllLines(inputFileName);
         var treeMatrix = CreateTreeMatrix(lines);
@@ -96,7 +96,7 @@ public static class TemplateService
     
     #region Part 2
     
-    public static int Part2(string inputFileName)
+    public static int GetMaximumScenicScore(string inputFileName)
     {
         var lines = File.ReadAllLines(inputFileName);
         var treeMatrix = CreateTreeMatrix(lines);

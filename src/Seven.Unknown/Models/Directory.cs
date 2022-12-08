@@ -1,4 +1,4 @@
-﻿namespace Template.Models;
+﻿namespace Seven.FileSystem.Models;
 
 public record Directory(string Name)
 {

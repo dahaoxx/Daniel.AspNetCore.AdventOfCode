@@ -1,18 +1,18 @@
 ﻿using One.ElfCalories.Exceptions;
-using Template.Enums;
-using Template.Extensions;
-using Directory = Template.Models.Directory;
-using File = Template.Models.File;
+using Seven.FileSystem.Enums;
+using Seven.FileSystem.Extensions;
+using Directory = Seven.FileSystem.Models.Directory;
+using File = Seven.FileSystem.Models.File;
 
-namespace Template.Services;
+namespace Seven.FileSystem.Services;
 
-public sealed class TemplateService
+public sealed class FileSystemService
 {
     private readonly Directory _rootDirectory = new("/");
     private readonly List<Directory> _allDirectories;
     private Directory _currentDirectory;
 
-    public TemplateService(string inputFileName)
+    public FileSystemService(string inputFileName)
     {
         _currentDirectory = _rootDirectory;
         _allDirectories = new List<Directory> {_currentDirectory};
