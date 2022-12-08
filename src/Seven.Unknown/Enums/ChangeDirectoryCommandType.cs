@@ -1,6 +1,6 @@
 ﻿namespace Template.Enums;
 
-public enum ChangeDirectory
+public enum ChangeDirectoryCommandType
 {
     ToParent,
     ToChild        

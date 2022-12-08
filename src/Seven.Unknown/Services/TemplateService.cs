@@ -1,101 +1,43 @@
-﻿using Template.Enums;
+﻿using One.ElfCalories.Exceptions;
+using Template.Enums;
 using Template.Extensions;
 using Directory = Template.Models.Directory;
 using File = Template.Models.File;
 
 namespace Template.Services;
 
-public static class TemplateService
+public sealed class TemplateService
 {
-    private static readonly Directory RootDirectory = new("/");
-    private static Directory _currentDirectory = RootDirectory;
-    private static readonly List<Directory> AllDirectories = new() {_currentDirectory};
-    
+    private readonly Directory _rootDirectory = new("/");
+    private readonly List<Directory> _allDirectories;
+    private Directory _currentDirectory;
+
+    public TemplateService(string inputFileName)
+    {
+        _currentDirectory = _rootDirectory;
+        _allDirectories = new List<Directory> {_currentDirectory};
+        CreateDirectoryTree(inputFileName);
+    }
+
     #region Part 1
 
-    public static int Part1(string inputFileName)
-    {
-        var lines = System.IO.File.ReadAllLines(inputFileName).Skip(1);
-
-        foreach (var line in lines)
-        {
-            var lineType = line.AsCommandLineType();
-            switch (lineType)
-            {
-                case LineType.Command:
-                {
-                    var commandType = line.AsCommand();
-                    switch (commandType)
-                    {
-                        case CommandType.ChangeDirectory:
-                        {
-                            var cdCommand = line.AsChangeDirectoryCommand();
-                            switch (cdCommand)
-                            {
-                                case ChangeDirectory.ToParent:
-                                {
-                                    _currentDirectory = _currentDirectory.Parent!;
-                                    break;
-                                }
-                                case ChangeDirectory.ToChild:
-                                {
-                                    var childDirectory = GetChildDirectory(line);
-                                    if (childDirectory is not null)
-                                    {
-                                        _currentDirectory = childDirectory;
-                                    }
-                                    break;
-                                }
-                            }
-                            break;
-                        }
-                        case CommandType.List:
-                            continue;
-                    }
-                    break;
-                }
-                case LineType.Print:
-                {
-                    var printType = line.AsPrint();
-                    switch (printType)
-                    {
-                        case PrintType.Directory:
-                            AddNewDirectory(line);
-                            break;
-                        case PrintType.File:
-                            AddFileToCurrentDirectory(line);
-                            break;
-                        default:
-                            throw new ArgumentOutOfRangeException();
-                    }
-                    break;
-                }
-            }
-        }
-
-        var sum = AllDirectories
+    public int Part1() =>
+        _allDirectories
             .Select(uniqueDirectory => uniqueDirectory.TotalFileSizeWithDescendants)
             .Where(totalFileSizeWithDescendants => totalFileSizeWithDescendants <= 100000)
             .Sum();
-        return sum;
-    }
-    
-  
 
     #endregion
     
     #region Part 2
     
-    public static int Part2(string inputFileName)
-    {        
-        const int discSize = 70000000; // 70 000 000
-        const int totalNeededDiscSpace = 30000000; // 30 000 000
-        
-        var usedDiscSpace = RootDirectory.TotalFileSizeWithDescendants; // 47 052 440
-        var availableDiscSpace = discSize - usedDiscSpace; // 22 947 560
-        var neededDiscSpace = totalNeededDiscSpace - availableDiscSpace; // 7 052 440
+    public int Part2(int discSize, int totalNeededDiscSpace)
+    {
+        var usedDiscSpace = _rootDirectory.TotalFileSizeWithDescendants;
+        var availableDiscSpace = discSize - usedDiscSpace;
+        var neededDiscSpace = totalNeededDiscSpace - availableDiscSpace;
 
-        var deleteCandidates = AllDirectories.Where(x => x.TotalFileSizeWithDescendants > neededDiscSpace);
+        var deleteCandidates = _allDirectories.Where(x => x.TotalFileSizeWithDescendants > neededDiscSpace);
         var delete = deleteCandidates.OrderBy(x => Math.Abs(neededDiscSpace - x.TotalFileSizeWithDescendants)).First();
         var deleteSize = delete.TotalFileSizeWithDescendants;
         
@@ -105,33 +47,142 @@ public static class TemplateService
     #endregion
 
     #region Helper
-    private static Directory? GetChildDirectory(string line)
+    
+    private void CreateDirectoryTree(string inputFileName)
+    {        
+        var lines = System.IO.File.ReadAllLines(inputFileName).Skip(1);
+        foreach (var line in lines)
+        {
+            var lineSplit = line.Split(" ").ToList();
+            
+            var lineType = lineSplit.AsCommandLineType();
+            switch (lineType)
+            {
+                case LineType.Command:
+                {
+                    HandleCommandInput(lineSplit);
+                    continue;
+                }
+                case LineType.Print:
+                {
+                    HandlePrintOutput(lineSplit);
+                    continue;
+                }
+                default:
+                    throw new ElfIsLyingException();
+            }
+        }
+    }
+    
+    private void HandleCommandInput(List<string> line)
     {
-        var directoryName = line.Split(" ")[2];
+        var commandType = line.AsCommand();
+        switch (commandType)
+        {
+            case CommandType.ChangeDirectory:
+            {
+                ChangeDirectory(line);
+                return;
+            }
+            case CommandType.List: // This command is ignored in current implementation
+                return;
+            default:
+                throw new ElfIsLyingException();
+        }
+    }
+    
+    private void HandlePrintOutput(List<string> line)
+    {
+        var printType = line.AsPrint();
+        switch (printType)
+        {
+            case PrintType.Directory:
+                AddDirectory(line);
+                return;
+            case PrintType.File:
+                AddFile(line);
+                return;
+            default:
+                throw new ElfIsLyingException();
+        }
+    }
+    
+
+    private void ChangeDirectory(List<string> line)
+    {
+        var commandType = line.AsChangeDirectoryCommand();
+        switch (commandType)
+        {
+            case ChangeDirectoryCommandType.ToParent:
+            {
+                ChangeDirectoryToParent();
+                return;
+            }
+            case ChangeDirectoryCommandType.ToChild:
+            {
+                ChangeDirectoryToChild(line);
+                return;
+            }
+            default:
+                throw new ElfIsLyingException();
+        }
+    }
+
+    private void ChangeDirectoryToChild(List<string> line)
+    {
+        _currentDirectory = GetTargetDirectory(line)
+                            ?? throw new ElfIsLyingException("Trying to cd into a non existing child directory");
+    }
+
+    private void ChangeDirectoryToParent()
+    {
+        _currentDirectory = _currentDirectory.Parent 
+                            ?? throw new ElfIsLyingException("Trying to cd to a non existing parent parent");
+    }
+
+    private Directory? GetTargetDirectory(List<string> line)
+    {
+        var directoryName = line[2];
         return _currentDirectory.GetChildByName(directoryName) ?? null;
     }
 
-    private static void AddNewDirectory(string line)
+    private void AddDirectory(List<string> line)
     {
-        var directoryName = line.Split(" ")[1];
-        var isDirectoryCreated = _currentDirectory.HasChildWithName(directoryName);
-        if (isDirectoryCreated)
-        {
-            Console.WriteLine("Directory already exists");
-        }
-
+        var directoryName = line[1];
+        ThrowIfDirectoryNameIsTaken(directoryName);
+        
         var newDirectory = new Directory(directoryName)
         {
             Parent = _currentDirectory
         };
         _currentDirectory.Children.Add(newDirectory);
-        AllDirectories.Add(newDirectory);
+        _allDirectories.Add(newDirectory);
+    }
+
+    private void ThrowIfDirectoryNameIsTaken(string directoryName)
+    {
+        if (_currentDirectory.HasChildWithName(directoryName))
+        {
+            throw new ElfIsLyingException($"Trying to create a folder with name: {directoryName}, " +
+                                          $"but it already exists in the current directory: {_currentDirectory.Name}");
+        }
     }
     
-    private static void AddFileToCurrentDirectory(string line)
+    private void ThrowIfFileNameIsTaken(string fileName)
     {
-        var fileSize = int.Parse(line.Split(" ")[0]);
-        var fileName = line.Split(" ")[1];
+        if (_currentDirectory.HasFileWithName(fileName))
+        {
+            throw new ElfIsLyingException($"Trying to create a file with name: {fileName}, " +
+                                          $"but it already exists in the current directory: {_currentDirectory.Name}");
+        }
+    }
+
+    private void AddFile(List<string> line)
+    {
+        var fileName = line[1];
+        ThrowIfFileNameIsTaken(fileName);
+        
+        var fileSize = int.Parse(line[0]);
         var file = new File(fileSize, fileName);
         _currentDirectory.Files.Add(file);
     }
