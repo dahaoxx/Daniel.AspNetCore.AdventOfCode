@@ -23,90 +23,168 @@ public static class TemplateService
             var headPosition = rope.Head.Position;
             var tailPosition = rope.Tail.Position;
             
-            // Check if H and T is too far apart
-            var isHeadTooFarAway = IsHeadTooFarAway(headPosition, tailPosition);
-            if (!isHeadTooFarAway)
+            // Check if H and T is not too far apart
+            if (!IsNextKnotTooFarAway(headPosition, tailPosition))
             {
                 continue;
             }
             
-            // Check if H and T has a shared axis
-            var isInSameYAxis = headPosition.Y == tailPosition.Y;
-            var isInSameXAxis = headPosition.X == tailPosition.X;
-            var isInSameAxis = isInSameXAxis || isInSameYAxis;
-            if (isInSameAxis)
-            {
-                if (isInSameYAxis)
-                {
-                    var isTailLeftForHead = tailPosition.X < headPosition.X;
-                    if (isTailLeftForHead)
-                    {
-                        tailPosition.X++;
-                    }
-                    else
-                    {
-                        tailPosition.X--;
-                    }
-                } else if (isInSameXAxis)
-                {
-                    var isTailUnderHead = tailPosition.Y < headPosition.Y;
-                    if (isTailUnderHead)
-                    {
-                        tailPosition.Y++;
-                    }
-                    else
-                    {
-                        tailPosition.Y--;
-                    }
-                }
-            }
-            else // H and T are too far apart diagonally
-            {
-                var isTopTop = headPosition.Y == tailPosition.Y + 2;
-                var isRightRight = headPosition.X == tailPosition.X + 2;
-                var isBotBot = headPosition.Y == tailPosition.Y - 2;
-                var isLeftLeft = headPosition.X == tailPosition.X - 2;
-
-                var isTop = headPosition.Y == tailPosition.Y + 1;
-                var isRight = headPosition.X == tailPosition.X + 1;
-                var isBot = headPosition.Y == tailPosition.Y - 1;
-                var isLeft = headPosition.X == tailPosition.X - 1;
-
-                if (IsHeadTopRight(isTopTop, isRight, isTop, isRightRight))
-                {
-                    MoveTailTopRight(rope);
-                }
-                    
-                if (IsHeadBotRight(isBotBot, isRight, isBot, isRightRight))
-                {
-                    MoveTailBotRight(rope);
-                }
-                    
-                if (IsHeadBotLeft(isBotBot, isLeft, isBot, isLeftLeft))
-                {
-                    MoveTailBotLeft(rope);
-                }
-                    
-                if (IsHeadTopLeft(isTopTop, isLeft, isTop, isLeftLeft))
-                {
-                    MoveTailTopLeft(rope);
-                }
-            }
+            MoveCurrentKnotPosition(headPosition, tailPosition);
+            
             // Add position to UniquePositionList if unique
-            if (!rope.Tail.UniquePositionsVisited.Any(x => x.X == tailPosition.X && x.Y == tailPosition.Y))
+            AddUniqueTailPosition(rope, tailPosition);
+        }
+        
+        return rope.Tail.UniquePositionsVisited.Count;
+    }
+
+    private static void AddUniqueTailPosition(Rope rope, Position tailPosition)
+    {
+        if (rope.Tail.UniquePositionsVisited.Any(x => x.X == tailPosition.X && x.Y == tailPosition.Y))
+        {
+            return;
+        }
+        
+        var position = new Position
+        {
+            X = tailPosition.X,
+            Y = tailPosition.Y,
+        };
+        rope.Tail.UniquePositionsVisited.Add(position);
+    }
+
+    private static void MoveCurrentKnotInSameAxis(bool isInSameYAxis, Position tailPosition, Position headPosition,
+        bool isInSameXAxis)
+    {
+        if (isInSameYAxis)
+        {
+            var isTailLeftForHead = tailPosition.X < headPosition.X;
+            if (isTailLeftForHead)
             {
-                var position = new Position()
+                tailPosition.X++;
+            }
+            else
+            {
+                tailPosition.X--;
+            }
+        }
+        else if (isInSameXAxis)
+        {
+            var isTailUnderHead = tailPosition.Y < headPosition.Y;
+            if (isTailUnderHead)
+            {
+                tailPosition.Y++;
+            }
+            else
+            {
+                tailPosition.Y--;
+            }
+        }
+    }
+
+    #endregion
+    
+    #region Part 2
+    
+    public static int Part2(string inputFileName)
+    {
+        var steps = GetStepsFromFile(inputFileName);
+        var rope = new Rope
+        {
+            IntermediateKnots =
+            {
+                new Knot { Name = "1"},
+                new Knot { Name = "2"},
+                new Knot { Name = "3"},
+                new Knot { Name = "4"},
+                new Knot { Name = "5"},
+                new Knot { Name = "6"},
+                new Knot { Name = "7"},
+                new Knot { Name = "8"},
+            }
+        };
+        
+        foreach (var step in steps)
+        {
+            // Move H based on Step.Direction
+            MoveHead(step, rope);
+
+            var nextKnotPosition = rope.Head.Position;
+            
+            // Check if H and T is too far apart
+            foreach (var currentKnotPosition in rope.IntermediateKnots.Select(currentKnot => currentKnot.Position))
+            {
+                if (IsNextKnotTooFarAway(nextKnotPosition, currentKnotPosition))
                 {
-                    X = tailPosition.X,
-                    Y = tailPosition.Y,
-                };
-                rope.Tail.UniquePositionsVisited.Add(position);
+                    MoveCurrentKnotPosition(nextKnotPosition, currentKnotPosition);
+                }
+                nextKnotPosition = currentKnotPosition;
+            }
+
+            var tailPosition = rope.Tail.Position;
+            if (IsNextKnotTooFarAway(nextKnotPosition, tailPosition))
+            {
+                MoveCurrentKnotPosition(nextKnotPosition, tailPosition);
+                AddUniqueTailPosition(rope, tailPosition);
             }
         }
         
         return rope.Tail.UniquePositionsVisited.Count;
     }
 
+    private static void MoveCurrentKnotPosition(Position nextKnotPosition, Position currentKnotPosition)
+    {
+        // Check if H and T has a shared axis
+        var isInSameYAxis = nextKnotPosition.Y == currentKnotPosition.Y;
+        var isInSameXAxis = nextKnotPosition.X == currentKnotPosition.X;
+        var isInSameAxis = isInSameXAxis || isInSameYAxis;
+        if (isInSameAxis)
+        {
+            MoveCurrentKnotInSameAxis(isInSameYAxis, currentKnotPosition, nextKnotPosition, isInSameXAxis);
+        }
+        else // H and T are too far apart diagonally
+        {
+            MoveCurrentKnotDiagonally(nextKnotPosition, currentKnotPosition);
+        }
+    }
+
+    #endregion
+
+    #region Helpers
+    
+    private static void MoveCurrentKnotDiagonally(Position nextKnotPosition, Position currentKnotPosition)
+    {
+        var isTopTop = nextKnotPosition.Y == currentKnotPosition.Y + 2;
+        var isRightRight = nextKnotPosition.X == currentKnotPosition.X + 2;
+        var isBotBot = nextKnotPosition.Y == currentKnotPosition.Y - 2;
+        var isLeftLeft = nextKnotPosition.X == currentKnotPosition.X - 2;
+
+        var isTop = nextKnotPosition.Y == currentKnotPosition.Y + 1;
+        var isRight = nextKnotPosition.X == currentKnotPosition.X + 1;
+        var isBot = nextKnotPosition.Y == currentKnotPosition.Y - 1;
+        var isLeft = nextKnotPosition.X == currentKnotPosition.X - 1;
+
+        if (IsHeadTopRight(isTopTop, isRight, isTop, isRightRight))
+        {
+            MoveTailTopRight(currentKnotPosition);
+        }
+
+        if (IsHeadBotRight(isBotBot, isRight, isBot, isRightRight))
+        {
+            MoveTailBotRight(currentKnotPosition);
+        }
+
+        if (IsHeadBotLeft(isBotBot, isLeft, isBot, isLeftLeft))
+        {
+            MoveTailBotLeft(currentKnotPosition);
+        }
+
+        if (IsHeadTopLeft(isTopTop, isLeft, isTop, isLeftLeft))
+        {
+            MoveTailTopLeft(currentKnotPosition);
+        }
+    }
+    
     private static bool IsHeadTopRight(bool isTopTop, bool isRight, bool isTop, bool isRightRight)
     {
         var isTopTopRight = isTopTop && isRight;
@@ -135,39 +213,39 @@ public static class TemplateService
         return isTopTopLeft || isTopLeftLeft;
     }
 
-    private static void MoveTailTopRight(Rope rope)
+    private static void MoveTailTopRight(Position currentKnotPosition)
     {
-        rope.Tail.Position.X++;
-        rope.Tail.Position.Y++;
+        currentKnotPosition.X++;
+        currentKnotPosition.Y++;
     }
 
-    private static void MoveTailBotRight(Rope rope)
+    private static void MoveTailBotRight(Position currentKnotPosition)
     {
-        rope.Tail.Position.X++;
-        rope.Tail.Position.Y--;
+        currentKnotPosition.X++;
+        currentKnotPosition.Y--;
     }
 
-    private static void MoveTailBotLeft(Rope rope)
+    private static void MoveTailBotLeft(Position currentKnotPosition)
     {
-        rope.Tail.Position.X--;
-        rope.Tail.Position.Y--;
+        currentKnotPosition.X--;
+        currentKnotPosition.Y--;
     }
 
-    private static void MoveTailTopLeft(Rope rope)
+    private static void MoveTailTopLeft(Position currentKnotPosition)
     {
-        rope.Tail.Position.X--;
-        rope.Tail.Position.Y++;
+        currentKnotPosition.X--;
+        currentKnotPosition.Y++;
     }
 
-    private static bool IsTooFarAwayUp(Position headPosition, Position tailPosition) 
-        => Math.Abs(headPosition.X - tailPosition.X) > 1;
+    private static bool IsTooFarAwayUp(Position nextKnot, Position currentKnot) 
+        => Math.Abs(nextKnot.X - currentKnot.X) > 1;
     
-    private static bool IsTooFarAwayInYAxis(Position headPosition, Position tailPosition) 
-        => Math.Abs(headPosition.Y - tailPosition.Y) > 1;
+    private static bool IsTooFarAwayInYAxis(Position nextKnot, Position currentKnot) 
+        => Math.Abs(nextKnot.Y - currentKnot.Y) > 1;
 
-    private static bool IsHeadTooFarAway(Position headPosition, Position tailPosition) 
-        => IsTooFarAwayUp(headPosition, tailPosition) ||
-           IsTooFarAwayInYAxis(headPosition, tailPosition);
+    private static bool IsNextKnotTooFarAway(Position nextKnot, Position currentKnot) 
+        => IsTooFarAwayUp(nextKnot, currentKnot) ||
+           IsTooFarAwayInYAxis(nextKnot, currentKnot);
 
     private static void MoveHead(Step step, Rope rope)
     {
@@ -212,14 +290,5 @@ public static class TemplateService
         return stepList;
     }
 
-    #endregion
-    
-    #region Part 2
-    
-    public static int Part2(string inputFileName)
-    {
-        return 2;
-    }
-    
     #endregion
 }

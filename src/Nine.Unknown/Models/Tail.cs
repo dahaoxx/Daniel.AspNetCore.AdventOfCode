@@ -1,7 +1,11 @@
 ﻿namespace Template.Models;
 
-public record Tail
+public class Tail : Knot
 {
-    public Position Position { get; set; } = new();
+    public Tail()
+    {
+        Name = "Tail";
+    }
+    
     public List<Position> UniquePositionsVisited { get; set; } = new();
 };

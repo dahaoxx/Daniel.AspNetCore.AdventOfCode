@@ -1,6 +1,9 @@
 ﻿namespace Template.Models;
 
-public record Head
+public class Head : Knot
 {
-    public Position Position { get; } = new();
+    public Head()
+    {
+        Name = "Head";
+    }
 }
