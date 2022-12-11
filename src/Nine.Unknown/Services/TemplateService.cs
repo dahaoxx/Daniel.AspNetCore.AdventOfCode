@@ -20,16 +20,17 @@ public static class TemplateService
             // Move H based on Step.Direction
             MoveHead(step, rope);
 
-            // Check if H and T has same X or Y, but too far away
             var headPosition = rope.Head.Position;
             var tailPosition = rope.Tail.Position;
             
+            // Check if H and T is too far apart
             var isHeadTooFarAway = IsHeadTooFarAway(headPosition, tailPosition);
             if (!isHeadTooFarAway)
             {
                 continue;
             }
             
+            // Check if H and T has a shared axis
             var isInSameYAxis = headPosition.Y == tailPosition.Y;
             var isInSameXAxis = headPosition.X == tailPosition.X;
             var isInSameAxis = isInSameXAxis || isInSameYAxis;
@@ -59,17 +60,17 @@ public static class TemplateService
                     }
                 }
             }
-            else
+            else // H and T are too far apart diagonally
             {
-                var isTopTop = rope.Head.Position.Y == rope.Tail.Position.Y + 2;
-                var isRightRight = rope.Head.Position.X == rope.Tail.Position.X + 2;
-                var isBotBot = rope.Head.Position.Y == rope.Tail.Position.Y - 2;
-                var isLeftLeft = rope.Head.Position.X == rope.Tail.Position.X - 2;
+                var isTopTop = headPosition.Y == tailPosition.Y + 2;
+                var isRightRight = headPosition.X == tailPosition.X + 2;
+                var isBotBot = headPosition.Y == tailPosition.Y - 2;
+                var isLeftLeft = headPosition.X == tailPosition.X - 2;
 
-                var isTop = rope.Head.Position.Y == rope.Tail.Position.Y + 1;
-                var isRight = rope.Head.Position.X == rope.Tail.Position.X + 1;
-                var isBot = rope.Head.Position.Y == rope.Tail.Position.Y - 1;
-                var isLeft = rope.Head.Position.X == rope.Tail.Position.X - 1;
+                var isTop = headPosition.Y == tailPosition.Y + 1;
+                var isRight = headPosition.X == tailPosition.X + 1;
+                var isBot = headPosition.Y == tailPosition.Y - 1;
+                var isLeft = headPosition.X == tailPosition.X - 1;
 
                 if (IsHeadTopRight(isTopTop, isRight, isTop, isRightRight))
                 {
@@ -92,12 +93,12 @@ public static class TemplateService
                 }
             }
             // Add position to UniquePositionList if unique
-            if (!rope.Tail.UniquePositionsVisited.Any(x => x.X == rope.Tail.Position.X && x.Y == rope.Tail.Position.Y))
+            if (!rope.Tail.UniquePositionsVisited.Any(x => x.X == tailPosition.X && x.Y == tailPosition.Y))
             {
                 var position = new Position()
                 {
-                    X = rope.Tail.Position.X,
-                    Y = rope.Tail.Position.Y,
+                    X = tailPosition.X,
+                    Y = tailPosition.Y,
                 };
                 rope.Tail.UniquePositionsVisited.Add(position);
             }
